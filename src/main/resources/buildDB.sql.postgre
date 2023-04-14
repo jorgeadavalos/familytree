@@ -1,0 +1,99 @@
+C:\"Program Files\PostgreSQL\9.3\bin"\psql.exe  -U postgres
+latinCoops   --dbname=latinCoops;
+
+for access to file 
+Type Everyone into the "Enter the object names to select" text area box.
+
+LOAD DATA LOCAL INFILE 'C:/jadallfolders/jadProject/jsfcoop/database/coops.txt' INTO TABLE COOPS LINES TERMINATED BY '\r\n';
+LOAD DATA LOCAL INFILE 'C:/jadallfolders/jadProject/jsfcoop/database/users.txt' INTO TABLE users LINES TERMINATED BY '\r\n';
+-- LOAD DATA LOCAL INFILE 'C:/jadallfolders/jadProject/jsfcoop/database/categories.txt' INTO TABLE categories LINES TERMINATED BY '\r\n';
+COPY categories FROM 'C:/jadallfolders/jadProject/jsfcoop/database/categories_postgrep.txt' delimiter ',';
+COPY users FROM 'C:/jadallfolders/jadJavaE64/familytree/database/users_postgrep.txt';
+COPY coops FROM 'C:/jadallfolders/jadProject/jsfcoop/database/coops_postgrep.txt';
+
+CREATE DATABASE homenetDB;
+set schema 'homenetDB';
+\c homenetDB;
+
+
+ALTER table users
+DROP COLUMN homenetid
+ALTER table users
+ADD COLUMN homenetid bigint  k
+
++++++++++++++++++++++++++++++++++++++++++
+enhancements:
+1. table users change key to family id and userid
+
+=========================================================================================================
+CREATE DATABASE familytreeDB;
+use familiesDB;
+
+CREATE TABLE familytrees (
+id SERIAL NOT NULL,
+memberid1 	bigint NOT NULL default '0',
+memberid2 	bigint NOT NULL default '0',
+firstname1	text NOT NULL default '',
+lastname1 	text NOT NULL default '',
+firstname2	text NOT NULL default '',
+lastname2 	text NOT NULL default '',
+createdate 	timestamp NOT NULL default '2010-05-07 00:00:00',
+email 		text not null default '',
+PRIMARY KEY (lastname1,lastname2,id) );
+
+CREATE TABLE parents (
+id SERIAL NOT NULL,
+familyid 	bigint NOT NULL default '0',
+memberid1 	bigint NOT NULL default '0',
+memberid2 	bigint NOT NULL default '0',
+firstname1	text NOT NULL  default ' ' ,
+lastname1 	text NOT NULL  default ' ' ,
+firstname2	text NOT NULL  default ' ' ,
+lastname2 	text NOT NULL  default ' ' ,
+createdate 	timestamp NOT NULL default '2010-05-07 00:00:00',
+PRIMARY KEY (familyid,lastname1,lastname2,id) );
+
+CREATE TABLE members (
+id SERIAL NOT NULL,
+familyid 	bigint NOT NULL default '0',
+parentid 	bigint NOT NULL default '0',
+firstname	text NOT NULL default ' ',
+lastname 	text NOT NULL default ' ',
+address 	text NOT NULL default ' ',
+city 		text NOT NULL default ' ',
+state 		varchar(30) NOT NULL default ' ',
+zipcode 	varchar(12) NOT NULL default ' ',
+country 	varchar(50) NOT NULL default ' ',
+mobile	 	varchar(50) NOT NULL default ' ',
+createdate 	timestamp NOT NULL default '2010-05-07 00:00:00',
+email 		text not null default '',
+PRIMARY KEY (familyid,id) );
+
+CREATE TABLE photos (
+id 			SERIAL NOT NULL,
+name 		text NOT NULL default '',
+createdate timestamp NOT NULL default '2010-05-07 00:00:00',
+photo bytea NOT NULL,
+PRIMARY KEY (id));
+
+CREATE TABLE members_photos (
+id 			SERIAL NOT NULL,
+name 		text NOT NULL default '',
+memberid 	bigint,
+familyid 	bigint,
+photoid 	bigint REFERENCES photos (id) ON DELETE CASCADE,
+FOREIGN KEY (familyid,memberid) REFERENCES members (familyid,id) ON DELETE CASCADE,
+PRIMARY KEY (id));
+ 
+CREATE TABLE users (
+firstname	text NOT NULL default '',
+lastname 	text NOT NULL default '',
+familyid 	bigint NOT NULL default '0',
+userid  	text NOT NULL default '',
+password  	text NOT NULL default '',
+type  		text NOT NULL default '',
+email 		text not null default '',
+failedlogin int not null default 0,
+createdate	timestamp NOT NULL default '2010-05-07 00:00:00',
+PRIMARY KEY (familyid,userid) );
+ 
