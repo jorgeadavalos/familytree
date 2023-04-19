@@ -40,7 +40,7 @@ function checkRequiredFields() {
 }
 function confirmEmail() {
 	const value = getParameterByName("jsonitem");
-	var page = "familytree/confirmEmail?jsonitem="+encodeURIComponent(value);
+	var page = _RESTBASELOGIN+"/confirmEmail?jsonitem="+encodeURIComponent(value);
 	var obj = new ajaxObj(page);
 	obj.ajaxFunc = function(objResp) {
 		var wrkJson = JSON.parse(objResp.ajaxmsg);
@@ -53,20 +53,20 @@ function confirmEmail() {
 function openPage(pageName) {
 	var genPopUp = window.open(pageName,"_parent");
  }
-function loginService() {
-	const value = getParameterByName("jsonitem");
-	var page = "familytree/login/"+encodeURIComponent(value);
-	var obj = new ajaxObj(page);
-	obj.ajaxFunc = function(objResp) {
-		var wrkJson = JSON.parse(objResp.ajaxmsg);
-		var jsonitem = encodeURIComponent(objResp.ajaxmsg);
-		localStorage.setItem("caller",objResp.ajaxmsg);
-		openPage(wrkJson["html"]+"?caller="+jsonitem);
-	}
-	ajaxRequest(obj,"GET");
-}
+//function loginService() {
+//	const value = getParameterByName("jsonitem");
+//	var page = _RESTBASELOGIN+"/login/"+encodeURIComponent(value);
+//	var obj = new ajaxObj(page);
+//	obj.ajaxFunc = function(objResp) {
+//		var wrkJson = JSON.parse(objResp.ajaxmsg);
+//		var jsonitem = encodeURIComponent(objResp.ajaxmsg);
+//		localStorage.setItem("caller",objResp.ajaxmsg);
+//		openPage(wrkJson["html"]+"?caller="+jsonitem);
+//	}
+//	ajaxRequest(obj,"GET");
+//}
 function RESTRegister() {
-	var page = "familytree/register/";
+	var page = _RESTBASELOGIN+"/register/";
 	var obj = new ajaxObj(page);
 	obj.ajaxFunc = function(objResp) {
 		var wrkJson = JSON.parse(objResp.ajaxmsg);

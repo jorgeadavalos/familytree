@@ -5,8 +5,8 @@
 			<img class="nav-toggle" onclick="return fadeIn()" src="includes/images/bt_next.gif" id="idFadeIn" />
 		</a>
 		<ul>
-		  <li><a id="loginAct" href="javascript:loginReq()">Login</a></li>
-		  <li><a id="logoutAct" href="javascript:logoutReq()"/>Logout</a></li>
+		  <li><a id="loginAct" class='showit' href="javascript:loginReq()">Login</a></li>
+		  <li><a id="logoutAct" class='dontshowit' href="javascript:logoutReq()"/>Logout</a></li>
 		  
 		  <li><a href="javascript:openPage('stepsToBuildFamily.jsp')"> Create family root </a></li>
 		  <li><a class="expand" href="javascript:openPage('stepsToAddUsers.jsp')">&#160;&#160;&#160;&#160;Add family member(s) </a></li>

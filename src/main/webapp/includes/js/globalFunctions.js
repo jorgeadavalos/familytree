@@ -159,7 +159,7 @@ function loadCanvas() {
 }
 function loginService() {
 	const value = getParameterByName("jsonitem");
-	var page = "familytree/login/"+encodeURIComponent(value);
+	var page = _RESTBASELOGIN+"/login/"+encodeURIComponent(value);
 	var obj = new ajaxObj(page);
 	obj.ajaxFunc = function(objResp) {
 		var wrkJson = JSON.parse(objResp.ajaxmsg);
@@ -254,7 +254,7 @@ function getBeanName(node) {
 	return beanName;
 }
 function getBeansFromCallee(beans) {
-	var beanReq = "familytree/beans/"+encodeURIComponent(JSON.stringify(beans));
+	var beanReq = _RESTBASELOGIN+"/beans/"+encodeURIComponent(JSON.stringify(beans));
 	var obj = new ajaxObj(beanReq);
 	obj.ajaxFunc = function(objResp) {
 		var serverJson = JSON.parse(objResp.ajaxmsg);
@@ -263,7 +263,7 @@ function getBeansFromCallee(beans) {
 	ajaxRequest(obj,"GET");
 }
 *//*function getBeansFromServer(beans) {
-	var beanReq = "familytree/geans/"+encodeURIComponent(JSON.stringify(beans));
+	var beanReq = _RESTBASELOGIN+"/geans/"+encodeURIComponent(JSON.stringify(beans));
 	var obj = new ajaxObj(beanReq);
 	obj.ajaxFunc = function(objResp) {
 		var serverJson = JSON.parse(objResp.ajaxmsg);

@@ -1,4 +1,4 @@
-const _BEANSUFFIX 	= "!{";
-const _beanSuffix 	= "}";
-const _RESTBASE	 	= "familytree";
-const _SERVICE	 	="familytree";
+const _BEANSUFFIX 		= "!{";
+const _beanSuffix 		= "}";
+const _RESTBASELOGIN 	= "familyTreeLogin";
+const _SERVICE	 		="familytree";

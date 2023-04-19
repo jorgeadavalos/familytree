@@ -88,7 +88,12 @@
 	  		<artifactId>javax.mail</artifactId>
 	  		<version>1.6.0</version>
 	  	</dependency>
-
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-test</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	
 	</dependencies>
   
 	<build>

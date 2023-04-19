@@ -20,7 +20,7 @@ import com.assoc.jad.familytree.model.FamilyTree;
 import com.assoc.jad.familytree.tools.FamilyStatic;
 
 @Service
-public class FamilyTreeService extends AFamilyTreeService {
+public class LoginService extends AFamilyTreeService {
 	final String loginRequirement = "{\n"
 			+"json = {};\n"
 			+ "	const regex = /^[a-zA-Z].*\\@.*\\..*$/;\n"

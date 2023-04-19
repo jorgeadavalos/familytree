@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="includes/css/scrollNav.css" type="text/css"></link>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="includes/js/globalFunctions.js"></script>	
+    <script type="text/javascript" src="includes/js/globalFields.js"></script>	
     <script type="text/javascript" src="includes/js/snippets.js"></script>	
 </head>
 <body onload="snippets()"> 

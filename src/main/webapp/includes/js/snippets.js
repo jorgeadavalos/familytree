@@ -99,7 +99,7 @@ function getBeansFromCallee(beans) {
 	populateFromJsonObjs(beans);
 }
 function getBeansFromServer(beans) {
-	var beanReq = _RESTBASE+"/beans?jsonitem="+encodeURIComponent(JSON.stringify(beans));
+	var beanReq = _RESTBASELOGIN+"/beans?jsonitem="+encodeURIComponent(JSON.stringify(beans));
 	var obj = new ajaxObj(beanReq);
 	obj.ajaxFunc = function(objResp) {
 		var serverJson = JSON.parse(objResp.ajaxmsg);

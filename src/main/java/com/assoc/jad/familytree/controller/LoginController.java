@@ -19,10 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.assoc.jad.familytree.bean.FamilyTreeBean;
 import com.assoc.jad.familytree.dao.FamilyTreeDao;
 import com.assoc.jad.familytree.service.FamilyTreeService;
+import com.assoc.jad.familytree.service.LoginService;
 
-//@RestController
-//@RequestMapping("/familytree")
-public class RestFamilyTree {
+@RestController
+@RequestMapping("/familyTreeLogin")
+public class LoginController {
 
 	//private static final Log LOG = LogFactory.getLog(RESTServlet.class);
 
@@ -31,7 +32,7 @@ public class RestFamilyTree {
 	@Autowired
 	FamilyTreeDao familyTreeDao;
 	@Autowired
-	FamilyTreeService familyTreeService;
+	LoginService loginService;
 	@Autowired
 	FamilyTreeBean familyTreeBean;
 
@@ -41,14 +42,14 @@ public class RestFamilyTree {
 	@GetMapping("/login/{jsonitem}")
 	public String loginReq(HttpServletResponse resp,HttpServletRequest req,@PathVariable("jsonitem") String jsonitem) {
 		
-		JSONObject json = familyTreeService.loginReq(req);
+		JSONObject json = loginService.loginReq(req);
 		return json.toJSONString();
 	}
 	@GetMapping("/register")
 	@ResponseBody
 	public String registerReq(HttpServletResponse resp,HttpServletRequest req) {
 		
-		JSONObject json = familyTreeService.registerReq(req);
+		JSONObject json = loginService.registerReq(req);
 		return json.toJSONString();
 	}
 	@PostMapping("/loginRegister")
@@ -59,7 +60,7 @@ public class RestFamilyTree {
 	@PostMapping("/add/familytree")
 	public String addFamilyTree(@RequestBody JSONObject json) {
 		if (beanInstances.size() == 0) initInstances();
-		JSONObject jsonOut = familyTreeService.addFamilyTree(json,beanInstances);
+		JSONObject jsonOut = loginService.addFamilyTree(json,beanInstances);
 		return jsonOut.toJSONString();
 	}
 	
@@ -67,8 +68,8 @@ public class RestFamilyTree {
 	public String getBeans(@RequestParam String jsonitem ) {
 		if (beanInstances.size() == 0) initInstances();
 
-		FamilyTreeService familyTreeService = new FamilyTreeService();
-		JSONObject jsonOut = familyTreeService.bldBeans(jsonitem,beanInstances);
+		FamilyTreeService loginService = new FamilyTreeService();
+		JSONObject jsonOut = loginService.bldBeans(jsonitem,beanInstances);
 		return jsonOut.toJSONString();
 	}
 	private void initInstances() {

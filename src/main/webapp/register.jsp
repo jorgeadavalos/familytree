@@ -2,10 +2,12 @@
 <html lang="en">
 	<head>
 		<title>Registration Process</title>
+		<link rel="stylesheet" href="includes/css/style.css" type="text/css"></link>
 		<link rel="stylesheet" href="includes/css/scrollNav.css" type="text/css"></link>
 		<link rel="stylesheet" href="includes/css/frames.css" type="text/css"></link>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript" src="includes/js/mainPage.js"></script>
+		<script type="text/javascript" src="includes/js/globalFields.js"></script>
 		<script type="text/javascript" src="includes/js/globalFunctions.js"></script>
 		<script type="text/javascript" src="includes/js/restAjax.js"></script>
 		<script type="text/javascript" src="includes/js/snippets.js"></script>
